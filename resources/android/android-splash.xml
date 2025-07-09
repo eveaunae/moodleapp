@@ -9,33 +9,50 @@
         android:pathData="M0,0L1536,0L1536,1536L0,1536Z"
         android:fillColor="#511642"/>
     
-    <!-- Icono UNAE simplificado centrado -->
-    <path
-        android:pathData="M668,668 L868,668 L868,788 L668,788 Z"
-        android:fillColor="#FFFFFF"/>
-    
-    <!-- Edificio principal -->
-    <path
-        android:pathData="M728,698 L808,698 L808,758 L728,758 Z"
-        android:fillColor="#511642"/>
-    
-    <!-- Columnas -->
-    <path
-        android:pathData="M738,708 L746,708 L746,748 L738,748 Z"
-        android:fillColor="#FFFFFF"/>
-    <path
-        android:pathData="M753,708 L761,708 L761,748 L753,748 Z"
-        android:fillColor="#FFFFFF"/>
-    <path
-        android:pathData="M768,708 L776,708 L776,748 L768,748 Z"
-        android:fillColor="#FFFFFF"/>
-    <path
-        android:pathData="M783,708 L791,708 L791,748 L783,748 Z"
-        android:fillColor="#FFFFFF"/>
-    
-    <!-- Techo -->
-    <path
-        android:pathData="M768,693 L723,708 L813,708 Z"
-        android:fillColor="#FFFFFF"/>
+    <!-- Logo UNAE centrado y más grande -->
+    <group android:translateX="768" android:translateY="768">
+        <!-- Marco principal del logo -->
+        <path
+            android:pathData="M-200,-120 L200,-120 L200,120 L-200,120 Z"
+            android:fillColor="#FFFFFF"
+            android:strokeWidth="4"
+            android:strokeColor="#FFFFFF"/>
         
+        <!-- Icono central estilizado -->
+        <path
+            android:pathData="M-160,-80 L-80,-80 L-80,80 L-160,80 Z"
+            android:fillColor="#511642"/>
+        
+        <!-- Columnas del edificio -->
+        <path
+            android:pathData="M-140,-60 L-130,-60 L-130,60 L-140,60 Z"
+            android:fillColor="#FFFFFF"/>
+        <path
+            android:pathData="M-120,-60 L-110,-60 L-110,60 L-120,60 Z"
+            android:fillColor="#FFFFFF"/>
+        <path
+            android:pathData="M-100,-60 L-90,-60 L-90,60 L-100,60 Z"
+            android:fillColor="#FFFFFF"/>
+        
+        <!-- Techo del edificio -->
+        <path
+            android:pathData="M-120,-80 L-155,-60 L-85,-60 Z"
+            android:fillColor="#FFFFFF"/>
+        
+        <!-- Texto UNAE representativo -->
+        <path
+            android:pathData="M-40,-80 L160,-80 L160,80 L-40,80 Z"
+            android:fillColor="#FFFFFF"/>
+        
+        <path
+            android:pathData="M-20,-60 L20,-60 L20,60 L-20,60 Z"
+            android:fillColor="#511642"/>
+        <path
+            android:pathData="M40,-60 L80,-60 L80,60 L40,60 Z"
+            android:fillColor="#511642"/>
+        <path
+            android:pathData="M100,-60 L140,-60 L140,60 L100,60 Z"
+            android:fillColor="#511642"/>
+    </group>
+    
 </vector>
