@@ -19,6 +19,7 @@ import { CoreNetwork } from '@services/network';
 import { CoreConfig } from '@services/config';
 import { CoreSites, CoreSiteCheckResponse, CoreLoginSiteInfo, CoreSitesDemoSiteData } from '@services/sites';
 import { CoreUtils } from '@singletons/utils';
+import { CoreOpener } from '@singletons/opener';
 import {
     CoreLoginHelper,
     CoreLoginSiteFinderSettings,
@@ -90,6 +91,24 @@ export default class CoreLoginSitePage implements OnInit {
      * @inheritdoc
      */
     async ngOnInit(): Promise<void> {
+        // Forzar fondo morado UNAE inmediatamente
+        setTimeout(() => {
+            const body = document.body;
+            const ionContent = document.querySelector('ion-content');
+            const ionPage = document.querySelector('.ion-page');
+            
+            if (body) {
+                body.style.background = '#511642';
+            }
+            if (ionContent) {
+                ionContent.style.setProperty('--background', '#511642');
+                ionContent.style.background = '#511642';
+            }
+            if (ionPage) {
+                (ionPage as HTMLElement).style.background = '#511642';
+            }
+        }, 100);
+
         let url = '';
         this.siteSelector = CoreConstants.CONFIG.multisitesdisplay;
 
@@ -637,6 +656,34 @@ export default class CoreLoginSitePage implements OnInit {
         );
 
         CoreCustomURLSchemes.treatHandleCustomURLError(error, customURL, 'CoreLoginSitePage');
+    }
+
+    /**
+     * Navigate to university platforms page.
+     */
+    goToUniversityPlatforms(): void {
+        CoreNavigator.navigate('/login/university-platforms');
+    }
+
+    /**
+     * Go to login with UNAE site.
+     */
+    goToLogin(): void {
+        CoreNavigator.navigate('/login/university-platforms');
+    }
+
+    /**
+     * Open UNAE services website.
+     */
+    openServices(): void {
+        CoreOpener.openInBrowser('https://servicios.unae.edu.ec');
+    }
+
+    /**
+     * Open UNAE support website.
+     */
+    openSupport(): void {
+        CoreOpener.openInBrowser('https://soporte.unae.edu.ec');
     }
 
     /**

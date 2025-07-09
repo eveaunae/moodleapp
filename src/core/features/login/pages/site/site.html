@@ -15,114 +15,45 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+
+<ion-content class="ion-padding unae-login-page">
     <div class="list-item-limited-width">
-        <div class="ion-text-center ion-padding ion-margin-bottom core-login-site-logo" [class.hidden]="hasSites || enteredSiteUrl">
-            <img src="assets/img/login_logo.png" class="avatar-full login-logo" [alt]="'core.login.logoof' | translate: { $a: appName }">
+        <!-- Logo Section -->
+        <div class="ion-text-center ion-padding core-login-site-logo">
+            <img src="assets/img/unae_login_logo-inv.png" class="login-logo" [alt]="'core.login.logoof' | translate: { $a: appName }">
         </div>
-        <form [formGroup]="siteForm" (ngSubmit)="connect(siteForm.value.siteUrl, $event)" *ngIf="!fixedSites && siteForm" #siteFormEl>
-            <!-- Form to input the site URL if there are no fixed sites. -->
-            <ng-container *ngIf="siteSelector==='url'">
-                <ion-item lines="inset">
-                    <ion-input name="url" type="url" placeholder="{{ 'core.login.siteaddressplaceholder' | translate }}"
-                        formControlName="siteUrl" [core-auto-focus]="showKeyboard && !showScanQR" labelPlacement="stacked"
-                        [label]="'core.login.siteaddress' | translate" [clearInput]="true" />
-                </ion-item>
-            </ng-container>
-            <ng-container *ngIf="siteSelector !== 'url'">
-                <ion-item lines="inset">
-                    <ion-input name="url" placeholder="{{ 'core.login.siteaddressplaceholder' | translate }}" formControlName="siteUrl"
-                        [core-auto-focus]="showKeyboard && !showScanQR" (ionInput)="searchSite($event, siteForm.value.siteUrl)"
-                        labelPlacement="stacked" [label]="'core.login.siteaddress' | translate" [clearInput]="true" />
-                </ion-item>
 
-                <ion-list [class.hidden]="!hasSites && !enteredSiteUrl" class="core-login-site-list">
-                    <ion-item class="core-login-site-list-title">
-                        <ion-label>
-                            <h2 class="item-heading">{{ 'core.login.selectsite' | translate }}</h2>
-                        </ion-label>
-                    </ion-item>
-                    <ion-item button *ngIf="enteredSiteUrl" (click)="connect(enteredSiteUrl.url, $event)"
-                        [attr.aria-label]="'core.login.connect' | translate" [detail]="true" class="core-login-entered-site">
-                        <ion-thumbnail slot="start" aria-hidden="true">
-                            <ion-icon name="fas-pen" aria-hidden="true" />
-                        </ion-thumbnail>
-                        <ion-label>
-                            <h2 class="ion-text-wrap">{{ 'core.login.yourenteredsite' | translate }}</h2>
-                            <p>{{enteredSiteUrl.noProtocolUrl}}</p>
-                        </ion-label>
-                    </ion-item>
-
-                    <div class="core-login-site-list-found" [class.hidden]="!hasSites" [class.dimmed]="loadingSites">
-                        <div *ngIf="loadingSites" class="core-login-site-list-loading">
-                            <ion-spinner [attr.aria-label]="'core.loading' | translate" />
-                        </div>
-                        <ng-container *ngFor="let site of sites">
-                            <ng-container *ngTemplateOutlet="sitelisting; context: {site: site}" />
-                        </ng-container>
-                    </div>
-                </ion-list>
-
-                <div *ngIf="!hasSites && loadingSites" class="core-login-site-nolist-loading">
-                    <ion-spinner [attr.aria-label]="'core.loading' | translate" />
-                </div>
-            </ng-container>
-
-            <ion-item *ngIf="siteSelector === 'url'">
-                <ion-label>
-                    <ion-button expand="block" [disabled]="!siteForm.valid" class="ion-text-wrap" type="submit">
-                        {{ 'core.login.connect' | translate }}
-                    </ion-button>
-                </ion-label>
-            </ion-item>
-        </form>
-
-        <ng-container *ngIf="fixedSites">
-            <!-- Pick the site from a list of fixed sites. -->
-            <ion-list *ngIf="siteSelector === 'list'">
-                <ion-item>
-                    <ion-label>
-                        <h2 class="item-heading">{{ 'core.login.selectsite' | translate }}</h2>
-                    </ion-label>
-                </ion-item>
-                <ion-searchbar *ngIf="fixedSites.length > 4" [(ngModel)]="filter" (ionInput)="filterChanged($event)"
-                    (ionCancel)="filterChanged()" [placeholder]="'core.login.findyoursite' | translate" />
-                <ng-container *ngFor="let site of filteredSites">
-                    <ng-container *ngTemplateOutlet="sitelisting; context: {site: site}" />
-                </ng-container>
-            </ion-list>
-        </ng-container>
-
-        <ng-container *ngIf="showScanQR && !hasSites && !enteredSiteUrl">
-            <div class="ion-text-center ion-padding ion-margin-top core-login-site-qrcode-separator">{{ 'core.login.or' | translate }}
-            </div>
-            <ion-button expand="block" fill="outline" class="ion-margin core-login-site-qrcode" (click)="showInstructionsAndScanQR()"
-                aria-haspopup="dialog">
-                <ion-icon slot="start" name="fas-qrcode" aria-hidden="true" />
-                {{ 'core.scanqr' | translate }}
+        <!-- Simplified Login Interface with 4 Buttons -->
+        <div class="unae-login-buttons">
+            <ion-button expand="block" fill="solid" class="ion-margin-bottom login-button btn-ingresar" 
+                (click)="goToLogin()">
+                <ion-icon slot="start" name="log-in-outline" aria-hidden="true" />
+                Ingresar
             </ion-button>
-        </ng-container>
 
-        <!-- Help. -->
+            <ion-button expand="block" fill="solid" class="ion-margin-bottom login-button btn-qr" 
+                (click)="scanQR()">
+                <ion-icon slot="start" name="qr-code-outline" aria-hidden="true" />
+                Escanear QR
+            </ion-button>
+
+            <ion-button expand="block" fill="outline" class="ion-margin-bottom login-button btn-servicios" 
+                (click)="openServices()">
+                <ion-icon slot="start" name="desktop-outline" aria-hidden="true" />
+                Servicios
+            </ion-button>
+
+            <ion-button expand="block" fill="outline" class="ion-margin-bottom login-button btn-soporte" 
+                (click)="openSupport()">
+                <ion-icon slot="start" name="help-circle-outline" aria-hidden="true" />
+                Soporte
+            </ion-button>
+        </div>
+
+        <!-- Help -->
         <ion-button class="ion-margin-top core-login-need-help core-button-as-link ion-text-wrap" (click)="showHelp()"
             aria-haspopup="dialog" expand="block" fill="clear">
             {{ 'core.needhelp' | translate }}
         </ion-button>
     </div>
 </ion-content>
-
-<!-- Template site selector. -->
-<ng-template #sitelisting let-site="site">
-    <ion-item button (click)="connect(site.url, $event)" [ngClass]="site.className" [attr.aria-label]="site.name" [detail]="true">
-        <ion-thumbnail *ngIf="siteFinderSettings.displayimage" slot="start">
-            <img [url]="site.imageurl" *ngIf="site.imageurl" core-external-content onError="this.src='assets/icon/icon.png'" alt=""
-                role="presentation">
-            <img src="assets/icon/icon.png" *ngIf="!site.imageurl" class="core-login-default-icon" alt="" role="presentation">
-        </ion-thumbnail>
-        <ion-label>
-            <p *ngIf="site.title" class="item-heading ion-text-wrap">{{site.title}}</p>
-            <p *ngIf="displaySiteUrl(site.url)">{{site.noProtocolUrl}}</p>
-            <p *ngIf="site.location">{{site.location}}</p>
-        </ion-label>
-    </ion-item>
-</ng-template>

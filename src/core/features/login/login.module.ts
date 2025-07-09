@@ -50,6 +50,10 @@ const appRoutes: Routes = [
                 loadComponent: () => import('@features/login/pages/site/site'),
             },
             {
+                path: 'university-platforms',
+                loadComponent: () => import('@features/login/pages/university-platforms/university-platforms'),
+            },
+            {
                 path: 'credentials',
                 loadComponent: () => CoreLoginHelper.getCredentialsPage(),
             },

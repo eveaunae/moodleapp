@@ -45,6 +45,7 @@ import { CoreLang, CoreLangFormat } from './lang';
 import { CoreErrorLogs } from '@singletons/error-logs';
 import { CoreErrorHelper, CoreErrorObject } from './error-helper';
 import { CoreDom } from '@singletons/dom';
+import { CoreDevEnvironmentService } from './dev-environment';
 
 /**
  * This service allows performing WS calls and download/upload files.

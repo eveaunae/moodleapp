@@ -2,10 +2,115 @@
 
 :host {
     --list-item-max-width: 600px;
+    
+    // Forzar fondo morado UNAE con máxima especificidad
+    background: #511642 !important;
+    
+    ion-content {
+        --background: #511642 !important;
+        background: #511642 !important;
+    }
+}
+
+// Asegurar que toda la página tenga fondo morado
+page-core-login-site {
+    background: #511642 !important;
+    
+    ion-content {
+        --background: #511642 !important;
+        background: #511642 !important;
+    }
+    
+    .ion-page {
+        background: #511642 !important;
+    }
+    
+    .content-area {
+        background: #511642 !important;
+    }
 }
 
 .core-login-site-connect {
     margin-top: 1.4rem;
+}
+
+// UNAE Login Buttons Styles
+.unae-login-buttons {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    
+    // Botón Ingresar - Blanco sólido
+    .btn-ingresar {
+        --background: #ffffff;
+        --color: #511642;
+        --border-color: #ffffff;
+        font-weight: 700;
+        
+        &:hover {
+            --background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    }
+    
+    // Botón Escanear QR - Gris
+    .btn-qr {
+        --background: #6c757d;
+        --color: #ffffff;
+        --border-color: #6c757d;
+        
+        &:hover {
+            --background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    }
+    
+    // Botones Servicios y Soporte - Outline blanco
+    .btn-servicios,
+    .btn-soporte {
+        --background: transparent;
+        --color: #ffffff;
+        --border-color: #ffffff;
+        --border-width: 2px;
+        --border-style: solid;
+        
+        &:hover {
+            --background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    }
+}
+
+.login-button {
+    height: 60px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    ion-icon {
+        margin-right: 12px;
+        font-size: 1.3rem;
+    }
+}
+
+.core-login-site-logo {
+    margin-bottom: 1rem;
+    
+    .login-logo {
+        max-width: 250px;
+        height: auto;
+        border-radius: 0; // Sin esquinas redondeadas
+        box-shadow: none; // Sin sombra para el logo UNAE
+    }
 }
 
 .item ion-thumbnail {
@@ -117,4 +222,74 @@
 
 .core-login-default-icon {
     filter: grayscale(100%);
+}
+
+// University platforms button styles
+.university-platforms-button {
+    border-radius: 12px;
+    --border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+    
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+// Ajustar textos para que se vean bien sobre fondo morado
+ion-title, ion-title h1 {
+    color: #ffffff !important;
+}
+
+.ion-text-center {
+    background: transparent !important;
+}
+
+// Asegurar que el contenido principal tenga fondo morado
+.list-item-limited-width {
+    background: transparent !important;
+    color: #ffffff;
+}
+
+// Estilos para el header sobre fondo morado
+ion-header {
+    ion-toolbar {
+        --background: #511642 !important;
+        --color: #ffffff !important;
+        
+        ion-title {
+            color: #ffffff !important;
+        }
+        
+        ion-button {
+            --color: #ffffff !important;
+            
+            ion-icon {
+                color: #ffffff !important;
+            }
+        }
+    }
+}
+
+// Estilos específicos para la página de login UNAE
+.unae-login-page {
+    --background: #511642 !important;
+    background: #511642 !important;
+    
+    &::before {
+        background: #511642 !important;
+    }
+    
+    .scroll-content {
+        background: #511642 !important;
+    }
+    
+    .inner-scroll {
+        background: #511642 !important;
+    }
 }

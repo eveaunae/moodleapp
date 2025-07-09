@@ -1,0 +1,125 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button fill="clear" (click)="goBack()" [ariaLabel]="'core.back' | translate">
+                <ion-icon slot="icon-only" name="arrow-back" aria-hidden="true" />
+            </ion-button>
+        </ion-buttons>
+
+        <ion-title>
+            <h1>Plataformas UNAE</h1>
+        </ion-title>
+
+        <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="openSettings()" [ariaLabel]="'core.settings.appsettings' | translate">
+                <ion-icon slot="icon-only" name="fas-gear" aria-hidden="true" />
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <!-- Pull to refresh -->
+    <ion-refresher slot="fixed" (ionRefresh)="refreshPlatforms($event)">
+        <ion-refresher-content pullingText="Desliza para actualizar" refreshingText="Actualizando..." />
+    </ion-refresher>
+
+    <div class="list-item-limited-width">
+        <!-- University Logo -->
+        <div class="ion-text-center ion-padding ion-margin-bottom university-logo">
+            <img src="assets/img/unae_login_logo.png" class="avatar-full login-logo" alt="Logo UNAE">
+            <p class="university-subtitle">Selecciona tu plataforma educativa</p>
+        </div>
+
+        <!-- Tabs for remote platforms (only show if both endpoints are available) -->
+        <div *ngIf="showTabs" class="tabs-container">
+            <ion-segment [(ngModel)]="selectedTab" (ionChange)="onTabChange()">
+                <ion-segment-button value="eveas">
+                    <ion-label>EVEAS</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="posgrados">
+                    <ion-label>POSGRADOS</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+
+        <!-- Platforms Loading -->
+        <div *ngIf="loading" class="ion-text-center ion-padding">
+            <ion-spinner name="crescent" />
+            <p>Cargando plataformas...</p>
+        </div>
+
+        <!-- Platforms List -->
+        <div *ngIf="!loading" class="platforms-container">
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="6" sizeMd="4" sizeLg="4" *ngFor="let platform of currentPlatforms; trackBy: trackByPlatform">
+                        <ion-card class="platform-card" [ngClass]="platform.color" button (click)="connectToPlatform(platform)">
+                            <ion-card-header class="ion-text-center">
+                                <!-- Use image from webservice if available, otherwise use icon -->
+                                <div class="platform-icon-container" [ngClass]="platform.color" *ngIf="!platform.image">
+                                    <ion-icon [name]="platform.icon" class="platform-icon" />
+                                </div>
+                                <div class="platform-image-container" *ngIf="platform.image">
+                                    <img [src]="platform.image" [alt]="platform.name" class="platform-image" />
+                                </div>
+                                <ion-card-title class="platform-name">{{ platform.name }}</ion-card-title>
+                            </ion-card-header>
+                            
+                            <ion-card-content>
+                                <p class="platform-description">{{ platform.description }}</p>
+                                <!-- URL removed for cleaner UI -->
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+
+        <!-- Empty state when no platforms are available -->
+        <div *ngIf="!loading && currentPlatforms.length === 0" class="ion-text-center ion-padding">
+            <ion-icon name="school-outline" class="empty-state-icon" />
+            <h3>No hay plataformas disponibles</h3>
+            <p *ngIf="!showTabs">No se pudieron cargar las plataformas educativas. Intenta más tarde.</p>
+            <p *ngIf="showTabs && selectedTab === 'posgrados'">No hay plataformas de posgrados disponibles en este momento.</p>
+            <ion-button fill="outline" (click)="refreshPlatforms()">
+                <ion-icon slot="start" name="refresh-outline" />
+                Reintentar
+            </ion-button>
+        </div>
+
+        <!-- Custom URL Section - TEMPORARILY HIDDEN -->
+        <div class="custom-url-section ion-margin-top" *ngIf="!loading && showCustomUrlSection">
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title class="custom-url-title">
+                        <ion-icon name="globe-outline" class="custom-url-icon" />
+                        Conectar a otra plataforma
+                    </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>Si conoces la URL de otra plataforma educativa de UNAE, puedes conectarte directamente:</p>
+                    <form [formGroup]="customUrlForm" (ngSubmit)="connectToCustomUrl()" class="ion-margin-top">
+                        <ion-item lines="inset">
+                            <ion-input 
+                                type="url" 
+                                placeholder="https://ejemplo.unae.edu.ec" 
+                                formControlName="customUrl"
+                                labelPlacement="stacked"
+                                label="URL de la plataforma"
+                                [clearInput]="true" />
+                        </ion-item>
+                        <ion-button 
+                            expand="block" 
+                            type="submit" 
+                            [disabled]="!customUrlForm.valid"
+                            class="ion-margin-top">
+                            <ion-icon slot="start" name="link-outline" />
+                            Conectar
+                        </ion-button>
+                    </form>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </div>
+</ion-content>

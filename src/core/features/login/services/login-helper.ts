@@ -544,22 +544,21 @@ export class CoreLoginHelperProvider {
      * @returns Promise resolved with boolean: whether is one of the fixed sites.
      */
     async isSiteUrlAllowed(siteUrl: string, checkSiteFinder = true): Promise<boolean> {
-        const sites = await this.getAvailableSites();
-
-        if (sites.length) {
-            const demoModeSite = this.getDemoModeSiteInfo();
-
-            return sites.some((site) => CoreUrl.sameDomainAndPath(siteUrl, site.url)) ||
-                (!!demoModeSite && CoreUrl.sameDomainAndPath(siteUrl, demoModeSite.url));
-        } else if (CoreConstants.CONFIG.multisitesdisplay == 'sitefinder' && CoreConstants.CONFIG.onlyallowlistedsites &&
-                checkSiteFinder) {
-            // Call the sites finder to validate the site.
-            const result = await CoreSites.findSites(siteUrl.replace(/^https?:\/\/|\.\w{2,3}\/?$/g, ''));
-
-            return result && result.some((site) => CoreUrl.sameDomainAndPath(siteUrl, site.url));
-        } else {
-            // No fixed sites or it uses a non-restrictive sites finder. Allow connecting.
+        // Custom UNAE domain restriction - only allow subdomains of unae.edu.ec
+        const allowedDomain = 'unae.edu.ec';
+        try {
+            const url = new URL(siteUrl.toLowerCase());
+            const isUnaeSubdomain = url.hostname.endsWith(allowedDomain) || url.hostname === allowedDomain;
+            
+            if (!isUnaeSubdomain) {
+                return false;
+            }
+            
+            // If it's a UNAE subdomain, allow it directly
             return true;
+        } catch (error) {
+            // Invalid URL format
+            return false;
         }
     }
 

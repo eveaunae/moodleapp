@@ -1,0 +1,526 @@
+// University Platforms Page Styles
+
+.university-logo {
+    .university-title {
+        color: var(--ion-color-primary);
+        font-weight: 700;
+        margin: 16px 0 8px 0;
+        font-size: 1.4rem;
+        text-align: center;
+        letter-spacing: 0.5px;
+    }
+
+    .university-subtitle {
+        color: var(--ion-color-medium);
+        margin: 0 0 24px 0;
+        font-size: 1rem;
+        text-align: center;
+        opacity: 0.8;
+    }
+    
+    .login-logo {
+        max-width: 250px;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.15);
+        margin-bottom: 16px;
+    }
+}
+
+.platforms-container {
+    ion-grid {
+        padding: 0;
+    }
+    
+    ion-row {
+        margin: 0;
+    }
+    
+    ion-col {
+        padding: 4px; // Reduce padding for tighter layout
+        
+        @media (max-width: 768px) {
+            padding: 3px; // Even tighter on mobile
+        }
+        
+        @media (max-width: 480px) {
+            padding: 2px; // Tightest on small screens
+        }
+    }
+    
+    .platform-card {
+        transition: all 0.3s ease;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: 100%; // Ensure equal height cards
+        display: flex;
+        flex-direction: column;
+        margin: 0; // Remove default margin
+        
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+        
+        ion-card-header {
+            flex-shrink: 0;
+        }
+        
+        ion-card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .platform-icon-container {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px auto;
+        background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary-shade));
+        
+        .platform-icon {
+            font-size: 32px;
+            color: white;
+        }
+    }
+
+    .platform-image-container {
+        width: 80px;
+        height: 80px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px auto;
+        background: var(--ion-color-light);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        
+        .platform-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            padding: 8px;
+        }
+    }
+
+    .platform-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--ion-color-primary);
+        margin: 0 0 8px 0;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    .platform-description {
+        color: var(--ion-color-medium);
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin: 0;
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.help-section {
+    .help-title {
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+        color: var(--ion-color-primary);
+        font-weight: 600;
+        
+        .help-icon {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+    }
+    
+    ion-card {
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(var(--ion-color-primary-rgb), 0.1);
+        border: 1px solid rgba(var(--ion-color-primary-rgb), 0.1);
+        
+        ion-card-content {
+            p {
+                color: var(--ion-color-medium);
+                line-height: 1.5;
+                margin-bottom: 16px;
+            }
+            
+            ion-button {
+                --border-radius: 12px;
+                --box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.3);
+                font-weight: 600;
+                
+                &:hover {
+                    transform: translateY(-2px);
+                    --box-shadow: 0 6px 16px rgba(var(--ion-color-primary-rgb), 0.4);
+                }
+            }
+        }
+    }
+}
+
+// Tabs container styles
+.tabs-container {
+    margin: 0 0 24px 0;
+    padding: 0 16px;
+
+    ion-segment {
+        border-radius: 16px;
+        background: var(--ion-color-light);
+        box-shadow: 0 4px 16px rgba(var(--ion-color-primary-rgb), 0.1);
+        border: 2px solid rgba(var(--ion-color-primary-rgb), 0.1);
+        
+        ion-segment-button {
+            margin: 4px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            
+            &.segment-button-checked {
+                background: var(--ion-color-primary);
+                color: white;
+                box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.4);
+                transform: translateY(-1px);
+            }
+            
+            &:not(.segment-button-checked) {
+                color: var(--ion-color-primary);
+                
+                &:hover {
+                    color: var(--ion-color-primary);
+                    background: rgba(var(--ion-color-primary-rgb), 0.15);
+                    transform: translateY(-1px);
+                }
+            }
+            
+            ion-label {
+                margin: 8px 0;
+                font-weight: inherit;
+            }
+        }
+    }
+}
+
+// Platform card variations for different tabs
+.platforms-container {
+    .platform-card {
+        // Add subtle animation when switching tabs
+        opacity: 0;
+        animation: fadeInTab 0.4s ease forwards;
+        
+        &.primary {
+            .platform-icon-container {
+                background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary-shade));
+            }
+        }
+        
+        &.secondary {
+            .platform-icon-container {
+                background: linear-gradient(135deg, var(--ion-color-secondary), var(--ion-color-secondary-shade));
+            }
+        }
+        
+        &.tertiary {
+            .platform-icon-container {
+                background: linear-gradient(135deg, var(--ion-color-tertiary), var(--ion-color-tertiary-shade));
+            }
+        }
+        
+        &.success {
+            .platform-icon-container {
+                background: linear-gradient(135deg, var(--ion-color-success), var(--ion-color-success-shade));
+            }
+        }
+        
+        &.warning {
+            .platform-icon-container {
+                background: linear-gradient(135deg, var(--ion-color-warning), var(--ion-color-warning-shade));
+            }
+        }
+        
+        &.danger {
+            .platform-icon-container {
+                background: linear-gradient(135deg, var(--ion-color-danger), var(--ion-color-danger-shade));
+            }
+        }
+        
+        // UNAE Brand Colors
+        &.unae-green {
+            .platform-icon-container {
+                background: linear-gradient(135deg, var(--ion-color-unae-green), var(--ion-color-unae-green-shade));
+            }
+        }
+        
+        &.unae-rose {
+            .platform-icon-container {
+                background: linear-gradient(135deg, var(--ion-color-unae-rose), var(--ion-color-unae-rose-shade));
+            }
+        }
+        
+        &.unae-teal {
+            .platform-icon-container {
+                background: linear-gradient(135deg, var(--ion-color-unae-teal), var(--ion-color-unae-teal-shade));
+            }
+        }
+    }
+}
+
+// Animation keyframes
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInTab {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.platform-card {
+    animation: fadeInUp 0.5s ease forwards;
+    
+    &:nth-child(1) { animation-delay: 0.1s; }
+    &:nth-child(2) { animation-delay: 0.2s; }
+    &:nth-child(3) { animation-delay: 0.3s; }
+}
+
+// Empty state styles
+.empty-state-icon {
+    font-size: 64px;
+    color: var(--ion-color-medium);
+    opacity: 0.6;
+    margin-bottom: 16px;
+}
+
+// Loading spinner customization
+ion-spinner {
+    --color: var(--ion-color-primary);
+    transform: scale(1.2);
+}
+
+// Enhanced platform card hover effects
+.platform-card {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(var(--ion-color-primary-rgb), 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    &:hover::before {
+        left: 100%;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .university-logo {
+        .university-title {
+            font-size: 1.2rem;
+        }
+        
+        .university-subtitle {
+            font-size: 0.9rem;
+        }
+    }
+
+    .platforms-container {
+        .platform-icon-container {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 12px auto;
+            
+            .platform-icon {
+                font-size: 26px;
+            }
+        }
+
+        .platform-image-container {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 12px auto;
+            border-radius: 12px;
+            
+            .platform-image {
+                border-radius: 8px;
+                padding: 6px;
+            }
+        }
+
+        .platform-name {
+            font-size: 1rem;
+            margin: 0 0 6px 0;
+        }
+        
+        .platform-description {
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .platform-card {
+            margin-bottom: 8px;
+            
+            ion-card-header {
+                padding: 12px 8px 8px 8px;
+            }
+            
+            ion-card-content {
+                padding: 8px 8px 12px 8px;
+            }
+        }
+    }
+
+    .tabs-container {
+        padding: 0 8px;
+        
+        ion-segment {
+            ion-segment-button {
+                ion-label {
+                    font-size: 0.85rem;
+                    margin: 6px 0;
+                }
+            }
+        }
+    }
+}
+
+// Small mobile devices (phones in portrait)
+@media (max-width: 480px) {
+    .platforms-container {
+        .platform-icon-container {
+            width: 45px;
+            height: 45px;
+            margin: 0 auto 10px auto;
+            
+            .platform-icon {
+                font-size: 24px;
+            }
+        }
+
+        .platform-image-container {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px auto;
+            border-radius: 10px;
+            
+            .platform-image {
+                border-radius: 6px;
+                padding: 4px;
+            }
+        }
+
+        .platform-name {
+            font-size: 0.95rem;
+            margin: 0 0 4px 0;
+        }
+        
+        .platform-description {
+            font-size: 0.75rem;
+            line-height: 1.2;
+        }
+        
+        .platform-card {
+            ion-card-header {
+                padding: 10px 6px 6px 6px;
+            }
+            
+            ion-card-content {
+                padding: 6px 6px 10px 6px;
+            }
+        }
+    }
+}
+
+// Custom URL Section Styles
+.custom-url-section {
+    .custom-url-title {
+        color: var(--ion-color-primary);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        
+        .custom-url-icon {
+            color: var(--ion-color-primary);
+            font-size: 1.2rem;
+        }
+    }
+    
+    ion-card {
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin: 16px 0;
+        
+        ion-card-content {
+            padding: 16px;
+            
+            p {
+                margin-bottom: 16px;
+                color: var(--ion-color-medium);
+                line-height: 1.4;
+            }
+            
+            form {
+                ion-item {
+                    --border-radius: 8px;
+                    --background: var(--ion-color-light);
+                    margin-bottom: 16px;
+                    
+                    ion-input {
+                        --placeholder-color: var(--ion-color-medium);
+                        font-size: 0.9rem;
+                    }
+                }
+                
+                ion-button {
+                    --border-radius: 8px;
+                    height: 48px;
+                    font-weight: 600;
+                    
+                    &:disabled {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "pregrado",
+    "name": "Pregrado Presencial",
+    "url": "https://pregrado.unae.edu.ec",
+    "description": "Carreras de pregrado modalidad presencial",
+    "icon": "school-outline",
+    "color": "primary"
+  },
+  {
+    "id": "linea",
+    "name": "Pregrado en Línea",
+    "url": "https://pregradoenlinea.unae.edu.ec",
+    "description": "Carreras de pregrado modalidad virtual",
+    "icon": "laptop-outline",
+    "color": "unae-teal"
+  },
+  {
+    "id": "distancia",
+    "name": "Distancia Profesionalización",
+    "url": "https://distancia.unae.edu.ec",
+    "description": "Programas de profesionalización docente a distancia",
+    "icon": "map-outline",
+    "color": "tertiary"
+  },
+  {
+    "id": "educon",
+    "name": "Educación Continua",
+    "url": "https://educacioncontinua.unae.edu.ec/",
+    "description": "Cursos y programas de formación continua",
+    "icon": "refresh-outline",
+    "color": "unae-green"
+  },
+  {
+    "id": "curext",
+    "name": "Cursos Extracurriculares",
+    "url": "https://cursosextracurriculares.unae.edu.ec/",
+    "description": "Talleres y cursos complementarios",
+    "icon": "extension-puzzle-outline",
+    "color": "unae-rose"
+  }
+]

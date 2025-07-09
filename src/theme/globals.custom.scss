@@ -3,3 +3,315 @@
  * ----------------------------------------------------------------------------
  * Place here all custom app variables.
  */
+
+// UNAE Splash Screen Styles
+// -------------------------
+
+// Splash screen para PWA/Browser
+app-root:empty {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #511642; // Morado UNAE
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    
+    &::before {
+        content: '';
+        width: 200px;
+        height: 120px;
+        background: white;
+        border-radius: 10px;
+        background-image: url('../assets/img/unae_logo.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation: fadeInScale 1.5s ease-in-out;
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// Loading spinner personalizado UNAE
+.loading-content {
+    background: #511642 !important;
+    
+    ion-spinner {
+        --color: #ffffff;
+    }
+}
+
+// Fondo específico para la página de login site
+page-core-login-site,
+.page-core-login-site {
+    background: #511642 !important;
+    
+    ion-content {
+        --background: #511642 !important;
+        background: #511642 !important;
+    }
+    
+    .ion-page {
+        background: #511642 !important;
+    }
+    
+    .content-area {
+        background: #511642 !important;
+    }
+    
+    // Header con fondo morado
+    ion-header ion-toolbar {
+        --background: #511642 !important;
+        --color: #ffffff !important;
+    }
+}
+
+// SOLUCIÓN FORZADA PARA FONDO MORADO EN LOGIN SITE
+// =================================================
+
+// Forzar fondo en todos los elementos posibles de la página de login
+body.page-core-login-site,
+body page-core-login-site,
+page-core-login-site,
+.page-core-login-site {
+    background: #511642 !important;
+    
+    * {
+        background-color: inherit !important;
+    }
+    
+    ion-app {
+        background: #511642 !important;
+    }
+    
+    ion-content {
+        --background: #511642 !important;
+        background: #511642 !important;
+        --ion-background-color: #511642 !important;
+        
+        .scroll-content {
+            background: #511642 !important;
+        }
+        
+        .inner-scroll {
+            background: #511642 !important;
+        }
+    }
+    
+    .ion-page {
+        background: #511642 !important;
+    }
+    
+    .content-area {
+        background: #511642 !important;
+    }
+    
+    // Header
+    ion-header {
+        background: #511642 !important;
+        
+        ion-toolbar {
+            --background: #511642 !important;
+            background: #511642 !important;
+            --color: #ffffff !important;
+            color: #ffffff !important;
+            
+            ion-title {
+                color: #ffffff !important;
+                
+                h1 {
+                    color: #ffffff !important;
+                }
+            }
+            
+            ion-button {
+                --color: #ffffff !important;
+                color: #ffffff !important;
+                
+                ion-icon {
+                    color: #ffffff !important;
+                }
+            }
+        }
+    }
+}
+
+// También aplicar cuando la URL contiene /login/site
+body[class*="login"] {
+    background: #511642 !important;
+    
+    ion-content {
+        --background: #511642 !important;
+        background: #511642 !important;
+    }
+}
+
+// FONDO MORADO PARA PÁGINAS DE LOGIN ESPECÍFICAS
+// ==============================================
+
+// Solo aplicar fondo morado a onboarding, NO a university-platforms
+.page-core-login-site-onboarding,
+page-core-login-site-onboarding {
+    background: #511642 !important;
+    
+    ion-content {
+        --background: #511642 !important;
+        background: #511642 !important;
+    }
+    
+    .ion-page {
+        background: #511642 !important;
+    }
+    
+    // Header con fondo morado
+    ion-header ion-toolbar {
+        --background: #511642 !important;
+        --color: #ffffff !important;
+        
+        ion-title {
+            color: #ffffff !important;
+            
+            h1 {
+                color: #ffffff !important;
+            }
+        }
+        
+        ion-button {
+            --color: #ffffff !important;
+            
+            ion-icon {
+                color: #ffffff !important;
+            }
+        }
+    }
+    
+    // Texto blanco para visibilidad
+    h1, h2, h3, p {
+        color: #ffffff !important;
+    }
+}
+
+// Asegurar que university-platforms mantenga fondo blanco normal
+.page-core-login-university-platforms,
+page-core-login-university-platforms {
+    background: var(--ion-background-color) !important;
+    
+    ion-content {
+        --background: var(--ion-background-color) !important;
+        background: var(--ion-background-color) !important;
+    }
+    
+    .ion-page {
+        background: var(--ion-background-color) !important;
+    }
+    
+    // Header con colores normales
+    ion-header ion-toolbar {
+        --background: var(--ion-toolbar-background) !important;
+        --color: var(--ion-toolbar-color) !important;
+    }
+    
+    // Texto con colores normales
+    .university-title,
+    .university-subtitle {
+        color: var(--ion-text-color) !important;
+    }
+}
+
+// SISTEMA DE LOGOS CONDICIONALES UNAE
+// ====================================
+
+// Logo blanco para fondos oscuros (login, splash, etc.)
+.page-core-login-site,
+.unae-login-page,
+.core-login-site-logo {
+    
+    // Asegurar que core-site-logo use logo blanco en contexto de login
+    core-site-logo {
+        .core-logo {
+            content: url('../assets/img/unae_login_logo-inv.png') !important;
+        }
+    }
+}
+
+// Configuraciones específicas para el componente core-site-logo
+core-site-logo {
+    
+    // En contextos de fondo claro (por defecto)
+    .core-logo,
+    .core-logo-fallback {
+        max-height: 40px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+    }
+    
+    // En contextos de fondo oscuro, usar logo blanco
+    .page-core-login-site &,
+    .unae-login-page &,
+    .core-login-site-logo & {
+        .core-logo {
+            content: url('../assets/img/unae_login_logo-inv.png');
+        }
+    }
+}
+
+// Soporte para modo oscuro del sistema
+:root.dark {
+    
+    // En modo oscuro global, usar logo blanco
+    core-site-logo {
+        .core-logo {
+            content: url('../assets/img/unae_login_logo-inv.png');
+        }
+    }
+    
+    // Excepto en elementos que tienen fondo claro específico
+    ion-modal,
+    ion-popover,
+    .modal-wrapper,
+    .popover-content {
+        core-site-logo {
+            .core-logo {
+                content: url('../assets/img/unae_login_logo.png');
+            }
+        }
+    }
+}
+
+// SPLASH SCREEN LOGOS
+// ===================
+
+// Asegurar que el splash screen use el logo correcto
+app-root:empty {
+    &::before {
+        // Ya está configurado con unae_logo.svg que es vectorial y se adapta
+        background-image: url('../assets/img/unae_logo.svg');
+    }
+}
+
+// Logo para la carga de la aplicación
+.loading-content {
+    background: #511642 !important;
+    
+    // Si hay algún logo en pantallas de carga
+    img,
+    .logo {
+        content: url('../assets/img/unae_login_logo-inv.png');
+    }
+}

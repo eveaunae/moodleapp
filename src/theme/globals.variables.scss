@@ -22,7 +22,15 @@ $green:       #357a32 !default;
 $red:         #ca3120 !default;
 $yellow:      #f0ad4e !default;
 
-$brand-color: #f98012 !default;
+// UNAE Brand Colors - Based on Corporate Identity Manual
+$unae-primary:     #511642 !default; // Main brand color (Morado UNAE)
+$unae-secondary:   #60606c !default; // Secondary gray from manual
+$unae-tertiary:    #4d858d !default; // Teal/Turquoise color updated
+$unae-support-1:   #b9e010 !default; // Green promotional color
+$unae-support-2:   #9d6167 !default; // Rose promotional color  
+$unae-support-3:   #6d958d !default; // Teal promotional color
+
+$brand-color: $unae-primary !default; // Changed from orange to UNAE primary
 
 $text-color:               $gray-900 !default;
 $text-color-rgb:           color-to-rgb-list($text-color) !default;
@@ -41,9 +49,9 @@ $ion-item-background-dark-rgb: color-to-rgb-list($ion-item-background-dark) !def
 
 $primary:      $brand-color !default;
 $primary-dark: $brand-color !default;
-$secondary:    $gray-300 !default;
+$secondary:    $unae-secondary !default; // Updated to UNAE secondary
 $danger:       $red !default;
-$warning:      $yellow !default;
+$warning:      $unae-tertiary !default; // Updated to UNAE yellow/gold
 $success:      $green !default;
 $info:         $blue !default;
 $light:        $gray-100 !default;
@@ -53,6 +61,7 @@ $dark:         $gray-900 !default;
 $colors:  (
     primary: (light: $primary, dark: $primary-dark),
     secondary: (light: $secondary, dark: $gray-700),
+    tertiary: (light: $unae-tertiary, dark: $unae-tertiary), // UNAE Gold/Yellow
     success: (light: $success),
     warning: (light: $warning),
     danger:  (light: $danger),
@@ -60,6 +69,10 @@ $colors:  (
     light: (light: $light, dark: $dark),
     medium: (light: $medium, dark: $gray-200),
     dark: (light: $dark, dark: $light),
+    // UNAE promotional colors
+    unae-green: (light: $unae-support-1, dark: $unae-support-1),
+    unae-rose: (light: $unae-support-2, dark: $unae-support-2),
+    unae-teal: (light: $unae-support-3, dark: $unae-support-3),
 ) !default;
 
 /**

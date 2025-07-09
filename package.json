@@ -1,10 +1,10 @@
 {
-    "name": "moodlemobile",
+    "name": "evea-unae",
     "version": "5.1.0",
-    "description": "The official app for Moodle.",
+    "description": "Entorno Virtual de Enseñanza-Aprendizaje UNAE",
     "author": {
-        "name": "Moodle Pty Ltd.",
-        "email": "mobile@moodle.com"
+        "name": "Universidad Nacional de Educación UNAE",
+        "email": "soporte@unae.edu.ec"
     },
     "repository": {
         "type": "git",
@@ -41,7 +41,14 @@
         "postinstall": "patch-package && cd cordova-plugin-moodleapp && npm install",
         "lang:update-langpacks": "./scripts/update_langpacks.sh",
         "lang:detect-langpacks": "./scripts/update_langpacks.sh detect",
-        "lang:create-langindex": "./scripts/create_langindex.sh"
+        "lang:create-langindex": "./scripts/create_langindex.sh",
+        "build:dev": "../scripts/build-dev.sh",
+        "build:release": "../scripts/build-release.sh",
+        "test:device": "../scripts/test-device.sh",
+        "dev:live": "../scripts/dev-live.sh",
+        "clean": "../scripts/clean.sh",
+        "clean:deep": "./scripts/clean.sh --deep",
+        "help:dev": "echo '\n🚀 COMANDOS DE DESARROLLO:\n  npm start         - Desarrollo en navegador\n  npm run build:dev - Generar APK debug\n  npm run test:device - Instalar en dispositivo\n  npm run dev:live  - Live reload en dispositivo\n  npm run clean     - Limpiar cache\n\n📖 Guía completa: cat FLUJO-DESARROLLO.md\n'"
     },
     "dependencies": {
         "@angular/animations": "^17.3.12",
@@ -71,6 +78,11 @@
         "@awesome-cordova-plugins/sqlite": "^6.15.0",
         "@awesome-cordova-plugins/status-bar": "^6.15.0",
         "@awesome-cordova-plugins/web-intent": "^6.15.0",
+        "@capacitor/app": "7.0.1",
+        "@capacitor/core": "7.4.1",
+        "@capacitor/haptics": "7.0.1",
+        "@capacitor/keyboard": "7.0.1",
+        "@capacitor/status-bar": "7.0.1",
         "@ionic/angular": "^8.5.0",
         "@ionic/cordova-builders": "^12.1.2",
         "@moodlehq/cordova-plugin-advanced-http": "3.3.1-moodle.1",
@@ -92,7 +104,6 @@
         "@types/dom-mediacapture-record": "1.0.7",
         "chart.js": "^4.4.8",
         "cordova": "^12.0.0",
-        "cordova-android": "^14.0.0",
         "cordova-clipboard": "^1.3.0",
         "cordova-ios": "^7.1.1",
         "cordova-plugin-add-swift-support": "^2.0.2",
@@ -137,6 +148,7 @@
         "@angular/cli": "^17.3.13",
         "@angular/compiler-cli": "^17.3.12",
         "@angular/language-service": "^17.3.12",
+        "@capacitor/cli": "7.4.1",
         "@ionic/angular-toolkit": "^11.0.1",
         "@ionic/cli": "^7.2.0",
         "@jsdevtools/coverage-istanbul-loader": "^3.0.5",
@@ -150,6 +162,7 @@
         "check-es-compat": "^3.2.1",
         "circular-dependency-plugin": "^5.2.2",
         "concurrently": "^8.2.2",
+        "cordova-android": "^14.0.1",
         "cordova-plugin-moodleapp": "file:cordova-plugin-moodleapp",
         "cross-env": "^7.0.3",
         "eslint": "^8.57.1",
@@ -182,8 +195,8 @@
     },
     "cordova": {
         "platforms": [
-            "android",
-            "ios"
+            "ios",
+            "android"
         ],
         "plugins": {
             "@moodlehq/cordova-plugin-advanced-http": {

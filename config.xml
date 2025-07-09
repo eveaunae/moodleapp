@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="51000" id="com.moodle.moodlemobile" ios-CFBundleVersion="5.1.0.0" version="5.1.0" versionCode="51000" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Moodle</name>
-    <description>Moodle official app</description>
-    <author email="mobile@moodle.com" href="http://moodle.com">Moodle Mobile team</author>
+<widget android-versionCode="51000" id="ec.edu.unae.evea" ios-CFBundleVersion="5.1.0.0" version="5.1.0" versionCode="51000" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>EVEA UNAE</name>
+    <description>Entorno Virtual de Enseñanza-Aprendizaje de la Universidad Nacional de Educación</description>
+    <author email="soporte@unae.edu.ec" href="https://unae.edu.ec">Universidad Nacional de Educación UNAE</author>
     <content src="index.html" />
     <access origin="*" />
     <access launch-external="yes" origin="tel:*" />
@@ -28,7 +28,7 @@
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="prerendered-icon" value="true" />
-    <preference name="AppendUserAgent" value="MoodleMobile 5.1.0 (51000)" />
+    <preference name="AppendUserAgent" value="EVEA_UNAE 5.1.0 (51000)" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="ScrollEnabled" value="true" />
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
@@ -61,8 +61,8 @@
     </feature>
     <platform name="android">
         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="resources/android/android-splash.xml" />
-        <preference name="AndroidWindowSplashScreenBackground" value="#FFFFFF" />
-        <preference name="AndroidWindowSplashScreenIconBackgroundColor" value="#FFFFFF" />
+        <preference name="AndroidWindowSplashScreenBackground" value="#511642" />
+        <preference name="AndroidWindowSplashScreenIconBackgroundColor" value="#511642" />
         <resource-file src="google-services.json" target="app/google-services.json" />
         <resource-file src="resources/android/icon/drawable-ldpi-smallicon.png" target="app/src/main/res/mipmap-ldpi/smallicon.png" />
         <resource-file src="resources/android/icon/drawable-mdpi-smallicon.png" target="app/src/main/res/mipmap-mdpi/smallicon.png" />
